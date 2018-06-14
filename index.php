@@ -45,6 +45,12 @@
 		font-family:Kanit;
 		
 	}
+  .foot{
+    width: 100%;
+    position:fixed;
+    bottom: 0px;
+    background: #f2f2f2;
+  }
 </style>
 </head>
 <body>
@@ -53,9 +59,9 @@
   ?>
   <br>
   <br>
-  <hr>
-  <footer  class="footer">
-      <p class="text-center ">Copyright © Tharin Tantayothin,Kwansitha Dueadkhunthod</p>
-  </footer>
+  
+  <div class="foot">
+      <center>Copyright © Tharin Tantayothin,Kwansitha Dueadkhunthod</center>
+  </div>
 </body>
 </html>

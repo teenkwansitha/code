@@ -119,6 +119,7 @@ h1{
         </div>
     </div>
     </div>
+<<<<<<< HEAD
 
 <div class="modal fade" id="myModal3">
     <div class="modal-dialog">
@@ -160,6 +161,10 @@ h1{
     </div>
     </div>
 
+=======
+  
+  
+>>>>>>> efe54f57110c75ea8c6f57692df925140c762137
 <script>
 function myFunction() {
     var x = document.getElementById("myInput");
