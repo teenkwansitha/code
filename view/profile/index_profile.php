@@ -31,7 +31,7 @@ h1{
     <div class="col-sm-8">
         <center>
         <br/><br/></br>
-        <a href="#" class="btn-success btn">แก้ไขรูปภาพ</a>
+        <a href="#" data-toggle="modal"  data-target="#myModal3" class="btn-success btn">แก้ไขรูปภาพ</a>
         <p style="padding-top:10px;">ชื่อ :</p>
         <p>Email :</p>
         <p>Username :</p>
@@ -120,6 +120,45 @@ h1{
     </div>
     </div>
 
+<div class="modal fade" id="myModal3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header ">
+        
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="font-weight: bold;"><center>แก้ไขรูปภาพ</center></h4>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+               <div class="">
+               <form>
+            <label>ชื่อ:</label><br/>
+            <center><input type="password" class="form-control " id="fname"><br/></center>
+
+            <label>นามสกุล:</label><br/>
+            <center><input type="password" class="form-control " id="sname"><br/></center>
+
+            <label>E-mail:</label><br/>
+            <center><input type="password" class="form-control" id="mail"><br/></center>
+
+
+            </form>
+               </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+                <div class="row">
+                <center><button type="submit" class="btn btn-primary btn-block custom" name="action" value="confirmpwd">ยืนยันการแก้ไขข้อมูลส่วนตัว</button></center>    
+                </div>   
+        </div>
+
+        </div>
+    </div>
+    </div>
 
 <script>
 function myFunction() {
