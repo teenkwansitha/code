@@ -16,7 +16,7 @@
 <html>
 <head>
 <title>Analysis</title>
-<link rel="shortcut icon" href="http://www.ku.ac.th/web2012/resources/upload/content/images/edu_kasetsart.jpg" />
+<link rel="shortcut icon" href="picture/logo/icon.png" />
 
 <meta http-equiv="Content-Language" content="th">
 <meta http-equiv="content-Type" content="text/html; charset=window-874">
@@ -53,6 +53,7 @@
   ?>
   <br>
   <br>
+  <hr>
   <footer  class="footer">
       <p class="text-center ">Copyright © Tharin Tantayothin,Kwansitha Dueadkhunthod</p>
   </footer>
