@@ -1,5 +1,6 @@
 <html>
 <body>
+
 <?php
     require_once("view/header/header.php");
 ?>
@@ -22,8 +23,38 @@ h1{
 }
 
 </style>
+<br><br><br><br><br><br><br><br>
+<h2>sssssssssssssssss</h2>
+<?php
+$sql = new mysqli(null,
+'root', // username
+'1234',
+'dbtest55',
+null,
+'/cloudsql/test55-207804:asia-south1:test55'
+);
+
+if ($sql->connect_errno) {
+echo 'no'."<br/>";
+die('Connect Error (' . $sql->connect_errno . ') '. $sql->connect_error);
+} else {
+echo 'yes'."<br/>";
+}
+$que= "SELECT fname FROM member";
+$result = mysqli_query($sql, $que);
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "fname: ". $row["fname"]."<br/>";
+    }
+} else {
+    echo "0 results";
+}
+ echo "tttt"."<br/>";
+?>
 
 <div class="container">
+    <h1>fffffffff</h1>
     <h2>ตั้งค่าโปรไฟล์</h2><br/>
     <div class="col-sm-4">
         <center><img class="img-circle header-pro" src="picture/user/nut.jpg" id="img" alt="user-img" width="250px"></center>

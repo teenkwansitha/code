@@ -8,9 +8,22 @@ class PageController
 	}
 	public function check_login()
 	{
-		
-		include('view/test/1.php');
-		
+		$username = $_POST['user'];
+		$password = $_POST['passwd'];
+		$loginlist = page :: login($username,$password);
+		session_start();
+        $_SESSION['name'] = $list[0]->name;
+        $_SESSION['lname'] = $list[0]->lname;
+        $_SESSION['list'] = $list;
+        //print_r($_SESSION['list']);
+        if($list[0]->type=="USER")
+        {
+            require_once("view/test/1.php");
+        }
+        else if($list[0]->type=="ADMIN")
+        {
+            require_once("view/test/1.php");
+        }
 	}
 	/* public function error()
 	{
