@@ -60,18 +60,20 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-            <form method="POST" id="add_work">
+            <form method="POST" id="add_member">
                <div>
                 <label><span class='red'>* </span>Firstname</label>
-                <input maxlength="70" type="text" name="title" class="form-control " placeholder="Enter firstname">
+                <input maxlength="70" type="text"  class="form-control " name="fname" placeholder="Enter firstname">
                 <label><span class='red'>* </span>Lastname</label>
-                <input maxlength="70" type="text" name="title" class="form-control " placeholder="Enter lastname">
+                <input maxlength="70" type="text"  class="form-control " name="lname" placeholder="Enter lastname">
                 <label><span class='red'>* </span>Username</label>
-                <input maxlength="70" type="text" name="title" class="form-control "placeholder="Enter username">
+                <input maxlength="70" type="text"  class="form-control " name="username" placeholder="Enter username">
                 <label><span class='red'>* </span>Password</label>
-                <input maxlength="70" type="password" name="title" class="form-control " placeholder="Enter password">
+                <input maxlength="70" type="password" class="form-control " name="passwd" placeholder="Enter password">
                 <label><span class='red'>* </span>E-mail</label>
-                <input maxlength="70" type="text" name="title" class="form-control" placeholder="name@email.com">
+                <input maxlength="70" type="text"  class="form-control" name="mail" placeholder="name@email.com">
+                <label><span class='red'>* </span>id_employee</label>
+                <input maxlength="70" type="text"  class="form-control" name="id_employee" placeholder="xxxxxx">
                </div>
                 <input type="hidden" name="controller" value="page">
                 

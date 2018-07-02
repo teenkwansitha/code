@@ -10,11 +10,11 @@ env_variables:
     # values obtained when configuring your Cloud SQL instance.
     MYSQL_USER: 'root'
     MYSQL_PASSWORD: '1234'
-    MYSQL_DSN: "mysql:dbname=dbtest55;unix_socket=/cloudsql/test55-207804:asia-south1:test55"
+    MYSQL_DSN: "mysql:dbname=dbtest55;unix_socket=/cloudsql/salebigdata:asia-south1:saledata"
 #[END env]
 
 #[START cloudsql_settings]
 # Use the connection name obtained when configuring your Cloud SQL instance.
 beta_settings:
-    cloud_sql_instances: 'test55-207804:asia-south1:test55'
+    cloud_sql_instances: 'salebigdata:asia-south1:saledata'
 #[END cloudsql_settings]

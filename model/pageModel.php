@@ -8,37 +8,38 @@ class page
     public $password;
     public $email;
     public $status;
-    function __construct($id,$fname,$lname,$username = "ไม่มี",$password= "ไม่มี",$email,$status) 
+    public $id_employee;
+    public $city;
+    public $country;
+
+    function __construct($id,$fname,$lname,$username = "ไม่มี",$password= "ไม่มี",$email,$status,$id_employee,$city,$country) 
     {
         $this->id = $id;
         $this->fname=$fname;
         $this->lname=$lname;
         $this->username = $username;
         $this->password=$password;
-        $this->type=$type;
+        $this->email=$email;
+        $this->status=$status;
+        $this->id_employee=$id_employee;
+        $this->city=$city;
+        $this->country=$country;
+
     }
-    public static function login($username = "ไม่มี" ,$password = "ไม่มี")
+    public static function check_login($username,$password)
     {
         require("connect.php");
-        $stmt = $con->prepare('SELECT * FROM member WHERE user=? AND passwd=?');
-        $stmt->execute([$username, $password]);
-        $ans = $stmt->fetch();
-        //print_r($ans);
-
-        if(!empty($ans))
-        {
-                $id = $ans['id'];
-                $username = $ans['username'];
-                $password = $ans['passwd'];
-                $fname = $ans['name'];
-                $lname = $ans['surname'];
-                $type = $ans['type'];
-                //$_SESSION['fname'] = $fname;
-                //$_SESSION['lname'] = $lname;
-                $list[] = new page($id,$username,$password,$fname,$lname,$type);
-            return  $list ;
-        }
-        else return null ; 
+        $que= "SELECT member.id_member,member.fname,member.lname,member.user,member.passwd,member.mail,member.status,employee.id_employee,
+        employee.gender,city.cityname,countryname 
+        FROM member 
+        LEFT JOIN employee ON member.id_employee = employee.id_employee
+        LEFT JOIN city ON city.id_city = employee.id_city
+        LEFT JOIN country ON country.id_country=city.id_country WHERE member.user = '$username' AND member.passwd='$password' ";
+        $result = mysqli_query($sql, $que);
+        $row = mysqli_fetch_array($result);
+        //print_r($row);
+        return $row ;
     }
+       
 }
 ?>

@@ -1,0 +1,18 @@
+{
+"type": "service_account",
+  "project_id": "salebigdata",
+  "private_key_id": "df4d50de91efe7851121d1808cb7af0f7f84c983",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCDL2bF5ysOshz\nedzWk+xXbaGDz0Q8OU1CTHOIawRMdX1Guv31jrEW2lCHR5j2Zas5S/O97+HAra4W\nquA/Bgyc32IoL1wv8WwcFTzloCDRhgLJbbEcs6t4R9Ddn70BOcPHsmDpNS9qfyIU\n+ev5DitshL+e0ryPrxx/CTNbtK2drmynTuj3/oj/fIImhO+m9uLiHYldEk+WEbRz\nqFWwP6boEJ4PRRToHr29EFQeLayssRdxDn5OvifCdJFY1kWeVveHILTrJTOvhk9F\nUMiHCEFlQbnU8XFHN2UMgf9OHXTB5QWQ+sEdSglfk6WPFUHodGrjhAafzWStL1iD\n7AZ62RBdAgMBAAECggEADha7OHS3KxkMfzfYlRrB1NowmR+WEnJNnfPrinrModmA\n6j7+29KLoH9iy+Oiozcf/qW5UW/GegUSJ/Kpm+HOTiB44baIkLGMWiCfnoNpBpVe\ng+3rJ0yTNUUvkLu9jwZ45LmaiCwUoHyRBqlbnOZOuE8OE5O03ZDG9qE+IZklZtaH\n/2C4Zt+AB0LvQPhqVX8wvMTxFAcffE5VJn0+yWY+d5NWnesqYqKRVzj9Dx5b/M21\nXyueE5f8azRHF+MytU00lnVSLakM9MvCiJWpe7/0zenyS68YOTrFKmcYUiZm4uec\nqfvMpUB5lv7CHyNApvZfVk+YP2c8x9Xkt2JFgm3m4QKBgQDtCobA5fg6UbnSyHmH\nkOm3rXHSYAk17ZNbtvV3fMM4IZSP8SugDApWKH3uoUpXNFHl4pftBzvoX5XVrsQJ\nCNh6gR9fgNNcAf2m+wNx+HFjtDuG4QuFGaXzJQF6uMNBY65Y1iqU35153e/9fbrr\nPUSm78w4HmWH4vnRTOI9DdxkIQKBgQDRkfTBll4dyUS1Xw7EKIfnYMBUMosmkwXt\noNlEanFDPxBSN1gNJ6xM5/yLcFtRiLCjqX+2wQdyCxibdJO7MR51gmYRuIjSNjs0\nxhaeWJpcMuMVGXUUT01IynLhdUnKD/kfUkQKV+VNdBbrZGpXoCR9zHk+/ZtXJL9P\nfSRX7z6kvQKBgHF9wrsE4G57xq6nEZjYxy4MOxzwojhRwWX+GVTWRVnQqiKo46xD\nV4ec536jdsZ95GBet0LjXcmKSmD+xhlVROCShgTh11CMG3ghYqrkutVz67ROd4eI\nmi3qH+U0JThfk5AxKj4ROoKowkjqM96BfSc4VNzhoNcI03dkikWVJ1pBAoGAFqft\nyuPjptq0Z9sv8HrlPllSUYfpTTFFycvC0UekmP1/WTQMe9eXI/VMcxKhfK4HUpon\naW1yzZxve5bdxbXoshF30WCewgME4Y6ssU+o2GDT9dr7skdkdoMUalVQtdyGNSGi\no2+fJYFwXOBNMs3oRAVP8kRef8xENma0ACGoJw0CgYEA2yvcYoDqYImqyzt+n1dB\nxGsqf42eh6w9xnv6uppoOJflDkDPqYxs9Ktu4o2YIfXuS/jdJJUzIztK+xbbZMqE\nJ2QHRRUVVYRJOgjPDYceqt/039Q3/1oyPamLFpWghhtzeTSG65RriJdVZOa2t6II\nJkYnLq/psBE1DpTRyj/5ftc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sale-167@salebigdata.iam.gserviceaccount.com",
+  "client_id": "110846882611224835620",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sale-167%40salebigdata.iam.gserviceaccount.com",
+    "require": {
+        "google/cloud-bigquery": "^1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    }
+}
