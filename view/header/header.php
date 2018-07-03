@@ -116,7 +116,7 @@ h1,h7{
     <a href="#" class="w3-bar-item w3-button">ยอดขายแยกตามประเทศ</a>
     <a href="#" class="w3-bar-item w3-button">ประเทศไหนขายอะไรดีสุด</a>
     <a href="#" class="w3-bar-item w3-button">เมืองไหนขายอะไรดีสุด</a>
-    <a href="#" class="w3-bar-item w3-button">ลูกค้า VIP </a>
+    <a href="?controller=sale&action=vip" class="w3-bar-item w3-button">ลูกค้า VIP </a>
   </div>
 </div>
 <?php } ?>
@@ -127,7 +127,7 @@ h1,h7{
   <a href="?controller=page&action=index_employee" class="w3-bar-item w3-button">Home</a>
   <a href="#" class="w3-bar-item w3-button">ยอดขายเเย่งตามหมวดหมู่</a>
   <a href="?controller=sale&action=index" class="w3-bar-item w3-button">ยอดขายของสินค้าที่ขายดีที่สุดรายเดือน</a>
-  <a href="#" class="w3-bar-item w3-button">ยอดขายที่ดีที่สุดรายปี</a>
+  <a href="?controller=sale&action=year" class="w3-bar-item w3-button">ยอดขายที่ดีที่สุดรายปี</a>
   <a href="#" class="w3-bar-item w3-button">ยอดขายของเเต่ละหมวดหมู่สินค้าต่อเดือน</a>
   
   

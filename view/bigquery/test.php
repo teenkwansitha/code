@@ -1,15 +1,12 @@
 
-<style>
-
-</style>
 <?php
 require_once("view/header/header.php");
 ?>
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 <div class="container">
     <form action="">
         <div class="form-group row" style="padding: 0px 10px;">
-            <div class="col-xs-4">
+            <div class="col-xs-2">
                 <div class="form-group">
                         <select class="form-control" name=month style="width:200px">
                         <option value="0">เดือน</option>
@@ -28,26 +25,36 @@ require_once("view/header/header.php");
                         </select>
                 </div>
             </div>
-                <div class="col-xs-1.5">
+
+            <div class="col-xs-2">
+                <div class="form-group" style="padding: 0px 15px;">
+                <select class="form-control" name=year style="width:150px">
+                <option value="0">ปี</option>
+                <option value="2018">2018</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-xs-1.5">
                 <input type="hidden" name="controller" value="sale"/>
                 <button type="submit" class="btn btn-danger" name="action" value="index" style="width:140px">Search</button>
-                </div>
+            </div>
         </div>
     </form>
 <?php  
-echo "".($month==1?"<h2>เดือน มกราคม </h2>":" ");
-echo "".($month==2?"<h2>เดือน กุมภาพันธ์ </h2>":" ");
-echo "".($month==3?"<h2>เดือน มีนาคม </h2>":" ");
-echo "".($month==4?"<h2>เดือน เมษายน </h2>":" ");
-echo "".($month==5?"<h2>เดือน พฤษภาคม </h2>":" ");
-echo "".($month==6?"<h2>เดือน มิถุนายน </h2>":" ");
-echo "".($month==7?"<h2>เดือน กรกฎาคม </h2>":" ");
-echo "".($month==8?"<h2>เดือน สิงหาคม </h2>":" ");
-echo "".($month==9?"<h2>เดือน กันยายน </h2>":" ");
-echo "".($month==10?"<h2>เดือน ตุลาคม </h2>":" ");
-echo "".($month==11?"<h2>เดือน พฤศจิกาย  </h2>":" ");
-echo "".($month==12?"<h2>เดือน ธันวาคม </h2>":" ");
+echo "".($month==1&&$year!=0?"<h2>เดือน มกราคม ปี $year</h2>":" ");
+echo "".($month==2&&$year!=0?"<h2>เดือน กุมภาพันธ์ ปี $year</h2>":" ");
+echo "".($month==3&&$year!=0?"<h2>เดือน มีนาคม ปี $year</h2>":" ");
+echo "".($month==4&&$year!=0?"<h2>เดือน เมษายน ปี $year</h2>":" ");
+echo "".($month==5&&$year!=0?"<h2>เดือน พฤษภาคม ปี $year</h2>":" ");
+echo "".($month==6&&$year!=0?"<h2>เดือน มิถุนายน ปี $year</h2>":" ");
+echo "".($month==7&&$year!=0?"<h2>เดือน กรกฎาคม ปี $year</h2>":" ");
+echo "".($month==8&&$year!=0?"<h2>เดือน สิงหาคม ปี $year</h2>":" ");
+echo "".($month==9&&$year!=0?"<h2>เดือน กันยายน ปี $year</h2>":" ");
+echo "".($month==10&&$year!=0?"<h2>เดือน ตุลาคม ปี $year</h2>":" ");
+echo "".($month==11&&$year!=0?"<h2>เดือน พฤศจิกายน  ปี $year</h2>":" ");
+echo "".($month==12&&$year!=0?"<h2>เดือน ธันวาคม ปี $year</h2>":" ");
 ?>
+ </div>
 <?php
 $dataPoints = array( 
 	array("y" => $sale_list[1][9],"label" => $sale_list[0][9] ),
@@ -104,4 +111,3 @@ echo "</table>"; */
  <body>
  <div id="chartContainer" style="height: 450px; width: 100%;"></div>
  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
- </div>

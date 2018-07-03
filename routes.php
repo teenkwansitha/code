@@ -30,7 +30,7 @@ function call($controller,$action)
 
 if( ($controller =='page'&& ($action =='month' ||$action =='login' || $action=='check_login' || $action=='register' || $action=='index_admin' || $action=='index_employee' )) 
 || ($controller == 'member' && ($action == 'index_pro' || $action == 'addMemberSys'|| $action == 'delect_member'|| $action == 'edit_member'|| $action == 'edit_passwd' ))
-|| ($controller == 'sale' && ($action == 'index' )))
+|| ($controller == 'sale' && ($action == 'index' || $action == 'year'|| $action == 'vip' )))
 {	
 	call($controller,$action);	
 }
