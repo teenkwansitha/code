@@ -262,6 +262,91 @@ class sale
 		}
 		return $resultpro ;
 	}
+	public static function getreport_3($month)
+	{
+		echo "modelget";
+		//require("connect.php");
+		$query = "SELECT count(sale.SalesID) as countpercate,category.CategoryName as category  
+		from [Saledata.sale] as sale  
+		inner join [Saledata.product] as product on product.ProductID= sale.ProductID
+		inner join [Saledata.category] as category on category.CategoryID = product.CategoryID 
+		where MONTH(sale. SalesDate) =$month AND year(sale.SalesDate)=2018
+		group by rollup(category) order by countpercate DESC";
+		//echo "$fname";
+		require_once("bigquery.php");
+		//echo "runs";
+		//print_r($result);
+		$result_category = array();
+		$i=0;
+		//print_r($result);
+		foreach ($result as $row) 
+		{	
+			//printf('--- Row %s ---' . PHP_EOL, ++$i);
+			foreach ($row as $column => $value) 
+			{
+				//$pname = $column;
+				$total = json_encode($value);
+				//echo $column."-".json_encode($value)."<br/>";
+				if($i==0){
+					$result_category[0][]=json_encode($value);
+					//echo $i."-".json_encode($value)."<br/>";
+					$i++;
+				}
+				else
+				{
+					$result_category[1][]=json_encode($value);
+					//echo $i."-".json_encode($value)."<br/>";
+					$i--;
+				}
+				
+				//$saleList[] = new sale($pname,$total);
+			}
+		}
+		echo "fmodelall";
+		return $result_category;
+	}
+	public static function getallreport_3()
+	{
+		echo "modelall";
+		//require("connect.php");
+		$query = "SELECT count(sale.SalesID) as countpercate,category.CategoryName as category  
+		from [Saledata.sale] as sale  
+		inner join [Saledata.product] as product on product.ProductID= sale.ProductID
+		inner join [Saledata.category] as category on category.CategoryID = product.CategoryID 
+		where year(sale.SalesDate)=2018 group by rollup(category) order by countpercate DESC";
+		//echo "$fname";
+		require_once("bigquery.php");
+		//echo "runs";
+		//print_r($result);
+		$result_category = array();
+		$i=0;
+		//print_r($result);
+		foreach ($result as $row) 
+		{	
+			//printf('--- Row %s ---' . PHP_EOL, ++$i);
+			foreach ($row as $column => $value) 
+			{
+				//$pname = $column;
+				$total = json_encode($value);
+				//echo $column."-".json_encode($value)."<br/>";
+				if($i==0){
+					$result_category[0][]=json_encode($value);
+					//echo $i."-".json_encode($value)."<br/>";
+					$i++;
+				}
+				else
+				{
+					$result_category[1][]=json_encode($value);
+					//echo $i."-".json_encode($value)."<br/>";
+					$i--;
+				}
+				
+				//$saleList[] = new sale($pname,$total);
+			}
+		}
+		echo "fmodelall";
+		return $result_category;
+	}
 
 
 
