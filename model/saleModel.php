@@ -14,13 +14,13 @@ class sale
 
 	public static function getall($fname,$lname)
 	{
-		echo "model";
+		//echo "model";
 		//require("connect.php");
-		echo "req";
-		echo "pro";
+		//echo "req";
+		//echo "pro";
 		$emfname = $_SESSION['user']['fname'];
 		$emlname= $_SESSION['user']['lname'];
-		echo "$emfname";
+		//echo "$emfname";
 		$query = "SELECT t1.pname as pname,sum(t1.total) as total1
 		from
 		(SELECT ProductName as pname,Price,Quantity as qty,Discount as dis,(Price*Quantity)-((Price*Quantity)* Discount)AS total,employee. FirstName AS emfname ,employee. LastName AS emlname
@@ -31,9 +31,9 @@ class sale
 		group by pname
 		order by total1 DESC
 		limit 10";
-		echo "run";
+		//echo "run";
 		require_once("bigquery.php");
-		echo "runs";
+		//echo "runs";
 		$resultpro = array();
 		$i=0;
 		//print_r($result);
@@ -61,21 +61,21 @@ class sale
 		}
 		return $resultpro ;
 	}
-	public static function get($fname,$lname,$month)
+	public static function get($fname,$lname,$month,$year)
 	{
-		echo "model";
+		//echo "model";
 		//require("connect.php");
 		$query = "SELECT t1.pname,sum(t1.total) as total1
 		from
-		(SELECT MONTH(SalesDate) AS mon,ProductName as pname,Price,Quantity as qty,Discount as dis,(Price*Quantity)-((Price*Quantity)* Discount)AS total,employee. FirstName AS emfname ,employee. LastName AS emlname
+		(SELECT MONTH(SalesDate) AS mon,YEAR(SalesDate) AS yea,ProductName as pname,Price,Quantity as qty,Discount as dis,(Price*Quantity)-((Price*Quantity)* Discount)AS total,employee. FirstName AS emfname ,employee. LastName AS emlname
 		from [salebigdata:Saledata.sale] AS sale
 		inner join [salebigdata:Saledata.product]AS product on product. ProductID = sale.ProductID 
 		inner join [salebigdata:Saledata.employee]AS employee on employee. EmployeeID = sale. SalesPersonID)as t1
-		where t1.emfname='$fname' && t1.emlname='$lname' && t1.mon = $month
-		group by t1.mon,t1.pname,t1.emfname,t1.emlname
+		where t1.emfname='$fname' && t1.emlname='$lname' && t1.mon = $month && t1.yea = $year
+		group by t1.yea,t1.mon,t1.pname,t1.emfname,t1.emlname
 		order by total1 DESC
 		limit 10";
-		echo "$fname";
+		//echo "$fname";
 		require_once("bigquery.php");
 		//echo "runs";
 		//print_r($result);
@@ -107,21 +107,27 @@ class sale
 		}
 		return $resultpro ;
 	}
-	public static function getreport_3($month)
+	public static function getyear2($fname,$lname,$year)
 	{
-		echo "modelget";
+		//echo "model";
 		//require("connect.php");
-		$query = "SELECT count(sale.SalesID) as countpercate,category.CategoryName as category  
-		from [Saledata.sale] as sale  
-		inner join [Saledata.product] as product on product.ProductID= sale.ProductID
-		inner join [Saledata.category] as category on category.CategoryID = product.CategoryID 
-		where MONTH(sale. SalesDate) =$month AND year(sale.SalesDate)=2018
-		group by rollup(category) order by countpercate DESC";
-		//echo "$fname";
+		$query = "SELECT max(t2.total1)as mac,t2.mon
+		from
+		(SELECT  t1.proid as proid1,t1.mon,t1.year,t1.pname as pname,sum(t1.total) as total1
+				from
+				(SELECT product. ProductID as proid ,month(SalesDate) as mon,year(SalesDate) as year,ProductName as pname,Price,Quantity as qty,Discount as dis,(Price*Quantity)-((Price*Quantity)* Discount)AS total,employee. FirstName AS emfname ,employee. LastName AS emlname
+				from [salebigdata:Saledata.sale] AS sale
+				inner join [salebigdata:Saledata.product]AS product on product. ProductID = sale.ProductID 
+				inner join [salebigdata:Saledata.employee]AS employee on employee. EmployeeID = sale. SalesPersonID)as t1
+				WHERE t1.emfname= '$fname' && t1.emlname= '$lname' && year=$year
+				group by proid1,t1.mon,t1.year,pname)as t2
+			group by t2.mon
+			order by t2.mon
+				limit 12";
 		require_once("bigquery.php");
 		//echo "runs";
 		//print_r($result);
-		$result_category = array();
+		$resultpro = array();
 		$i=0;
 		//print_r($result);
 		foreach ($result as $row) 
@@ -133,13 +139,13 @@ class sale
 				$total = json_encode($value);
 				//echo $column."-".json_encode($value)."<br/>";
 				if($i==0){
-					$result_category[0][]=json_encode($value);
+					$resultpro[0][]=json_encode($value);
 					//echo $i."-".json_encode($value)."<br/>";
 					$i++;
 				}
 				else
 				{
-					$result_category[1][]=json_encode($value);
+					$resultpro[1][]=json_encode($value);
 					//echo $i."-".json_encode($value)."<br/>";
 					$i--;
 				}
@@ -147,24 +153,76 @@ class sale
 				//$saleList[] = new sale($pname,$total);
 			}
 		}
-		echo "fmodelall";
+		return $resultpro ;
+	}
+	public static function getyear1($fname,$lname)
+	{
+		echo "model";
+		//require("connect.php");
+		$query = "SELECT max(t2.total1)as mac,t2.year
+		from
+		(SELECT  t1.proid as proid1,t1.mon,t1.year,t1.pname as pname,sum(t1.total) as total1
+				from
+				(SELECT product. ProductID as proid ,month(SalesDate) as mon,year(SalesDate) as year,ProductName as pname,Price,Quantity as qty,Discount as dis,(Price*Quantity)-((Price*Quantity)* Discount)AS total,employee. FirstName AS emfname ,employee. LastName AS emlname
+				from [salebigdata:Saledata.sale] AS sale
+				inner join [salebigdata:Saledata.product]AS product on product. ProductID = sale.ProductID 
+				inner join [salebigdata:Saledata.employee]AS employee on employee. EmployeeID = sale. SalesPersonID)as t1
+				WHERE t1.emfname= '$fname' && t1.emlname= '$lname'
+				group by proid1,t1.mon,t1.year,pname)as t2
+			group by t2.year
+			order by t2.year
+				limit 12";
+		require_once("bigquery.php");
+		//echo "runs";
+		//print_r($result);
+		$resultpro = array();
+		$i=0;
+		//print_r($result);
+		foreach ($result as $row) 
+		{	
+			//printf('--- Row %s ---' . PHP_EOL, ++$i);
+			foreach ($row as $column => $value) 
+			{
+				//$pname = $column;
+				$total = json_encode($value);
+				//echo $column."-".json_encode($value)."<br/>";
+				if($i==0){
+					$resultpro[0][]=json_encode($value);
+					//echo $i."-".json_encode($value)."<br/>";
+					$i++;
+				}
+				else
+				{
+					$resultpro[1][]=json_encode($value);
+					//echo $i."-".json_encode($value)."<br/>";
+					$i--;
+				}
+				
+				//$saleList[] = new sale($pname,$total);
+			}
+		}
+		return $resultpro ;
+	}
 
-		return $result_category;
-	}
-	public static function getallreport_3()
+	public static function vip($month,$year)
 	{
-		echo "modelall";
+		echo "model";
 		//require("connect.php");
-		$query = "SELECT count(sale.SalesID) as countpercate,category.CategoryName as category  
-		from [Saledata.sale] as sale  
-		inner join [Saledata.product] as product on product.ProductID= sale.ProductID
-		inner join [Saledata.category] as category on category.CategoryID = product.CategoryID 
-		where year(sale.SalesDate)=2018 group by rollup(category) order by countpercate DESC";
-		//echo "$fname";
+		$query = "SELECT month( SalesDate) as mon,customer. FirstName as cusname,customer. LastName as cuslname ,sum((Price*Quantity)-((Price*Quantity)* Discount))AS total, city.CityName as city
+		, country. CountryName as country		
+			from [salebigdata:Saledata.sale] AS sale
+				inner join [salebigdata:Saledata.product]AS product on product. ProductID = sale.ProductID  
+			inner join [salebigdata:Saledata.customer]AS customer on customer. CustomerID = sale. CustomerID
+			inner join [salebigdata:Saledata.city]as city on customer. CityID = city. CityID
+			inner join [salebigdata:Saledata.country] as country on country. CountryID = city. CountryID   
+			where month( SalesDate)=$month && year(SalesDate)=$year
+			group by mon,cusname,cuslname,city,country
+			order by total DESC
+			limit 10";
 		require_once("bigquery.php");
 		//echo "runs";
 		//print_r($result);
-		$result_category = array();
+		$resultpro = array();
 		$i=0;
 		//print_r($result);
 		foreach ($result as $row) 
@@ -176,21 +234,34 @@ class sale
 				$total = json_encode($value);
 				//echo $column."-".json_encode($value)."<br/>";
 				if($i==0){
-					$result_category[0][]=json_encode($value);
-					//echo $i."-".json_encode($value)."<br/>";
+					$resultpro[0][]=json_encode($value);
+					echo $i."-".json_encode($value)."<br/>";
 					$i++;
 				}
-				else
+				if($i==1)
 				{
-					$result_category[1][]=json_encode($value);
-					//echo $i."-".json_encode($value)."<br/>";
-					$i--;
+					$resultpro[1][]=json_encode($value);
+					echo $i."-".json_encode($value)."<br/>";
+					$i++;
 				}
+				if($i==2)
+				{
+					$resultpro[2][]=json_encode($value);
+					echo $i."-".json_encode($value)."<br/>";
+					$i++;
+				}
+				if($i==3)
+				{
+					$resultpro[3][]=json_encode($value);
+					echo $i."-".json_encode($value)."<br/>";
+					$i=0;
+				}
+
 				
 				//$saleList[] = new sale($pname,$total);
 			}
 		}
-		echo "fmodelall";
-		return $result_category;
+		return $resultpro ;
 	}
+
 }
